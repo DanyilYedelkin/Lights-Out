@@ -24,16 +24,24 @@ namespace LightsOff.ConsoleUI
             while (!IfWin())
             {
                 PrintField();
-                var coordinates = ConsoleInput();
-
                 try
                 {
-                    changeLights.Toggle(coordinates.Item1, coordinates.Item2);
+                    var coordinates = ConsoleInput();
+
+                    try
+                    {
+                        changeLights.Toggle(coordinates.Item1, coordinates.Item2);
+                    }
+                    catch (IndexOutOfRangeException indexOutOfMap)
+                    {
+
+                        Console.WriteLine("Out of bounds, try again !!!");
+                    }
                 }
-                catch (IndexOutOfRangeException indexOutOfMap)
+                catch (FormatException invalidTypeVariable)
                 {
 
-                    Console.WriteLine("Out of bounds, try again !!!");
+                    Console.WriteLine("Please type integers !!!");
                 }
 
                 Console.WriteLine();
