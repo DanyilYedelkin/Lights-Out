@@ -1,4 +1,4 @@
-﻿using LightsOff.Core;
+using LightsOff.Core;
 using LightsOffCore.Core;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,17 @@ namespace LightsOff.ConsoleUI
             {
                 PrintField();
                 var coordinates = ConsoleInput();
-                changeLights.Toggle(coordinates.Item1, coordinates.Item2);
+
+                try
+                {
+                    changeLights.Toggle(coordinates.Item1, coordinates.Item2);
+                }
+                catch (IndexOutOfRangeException indexOutOfMap)
+                {
+
+                    Console.WriteLine("Out of bounds, try again !!!");
+                }
+
                 Console.WriteLine();
             }
 
