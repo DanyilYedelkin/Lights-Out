@@ -1,5 +1,6 @@
 using LightsOff.Core;
 using LightsOffCore.Core;
+using LightsOffCore.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,15 +11,18 @@ namespace LightsOff.ConsoleUI
     public class ConsoleUI
     {
         private readonly Field _field;
+        ChangeLights changeLights;
+        private readonly IScoreService _scoreService = new ScoreServiceFile();
 
         public ConsoleUI(Field field)
         {
             _field = field;
+            changeLights = new ChangeLights(_field);
         }
 
         public void Play()
         {
-            ChangeLights changeLights = new ChangeLights(_field);
+            PrintTopScores();
 
 
             while (!IfWin())
@@ -47,13 +51,16 @@ namespace LightsOff.ConsoleUI
                 Console.WriteLine();
             }
 
+            _scoreService.AddScore(
+                new LightsOffCore.Entity.Score { Player = "Jaro", Points = _field.GetScore(), PlayedAt = DateTime.Now });
+
             EndMessage();
         }
 
         private void PrintField()
         {
             Console.Write(ToString(_field));
-            Console.WriteLine();
+            Console.WriteLine("\nScore: {0}\n", _field.GetScore());
         }
 
         private String ToString(Field field)
@@ -116,5 +123,16 @@ namespace LightsOff.ConsoleUI
             }
         }
 
+        private void PrintTopScores()
+        {
+            Console.WriteLine("----------------------------------------------------------------");
+            Console.WriteLine("------------------------    TOP SCORES   -----------------------");
+            Console.WriteLine("----------------------------------------------------------------");
+
+            foreach (var score in _scoreService.GetTopScores())
+            {
+                Console.WriteLine("{0} {1}\n", score.Player, score.Points);
+            }
+        }
     }
 }
