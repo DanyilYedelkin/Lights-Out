@@ -3,16 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace LightsOff.Core
 {
     public class Field
     {
         private readonly Tile[,] _tiles;
-        private Coordinate _emptyTileCoordinate;
+        private DateTime startTime;
 
-        public int RowCount { get; }
-        public int ColumnCount { get; }
+        public int RowCount { get; set; }
+        public int ColumnCount { get; set; }
 
         public Field(int rowCount, int columnCount)
         {
@@ -29,8 +28,10 @@ namespace LightsOff.Core
             set { _tiles[row, column] = value; }
         }
 
-        private void Initialize()
+        public void Initialize()
         {
+            startTime = DateTime.Now;
+            
             for (var row = 0; row < RowCount; row++)
             {
                 for (var column = 0; column < ColumnCount; column++)
@@ -41,6 +42,26 @@ namespace LightsOff.Core
                     _tiles[row, column] = new Tile(value);
                 }
             }
+        }
+
+        public bool IfWin()
+        {
+            bool win = true;
+
+            for (var row = 0; row < RowCount; row++)
+            {
+                for (var column = 0; column < ColumnCount; column++)
+                {
+                    if (_tiles[row, column].Value) win = false;
+                }
+            }
+
+            return win;
+        }
+
+        public int GetScore()
+        {
+            return RowCount * ColumnCount + 1000 - (DateTime.Now - startTime).Seconds;
         }
 
     }
