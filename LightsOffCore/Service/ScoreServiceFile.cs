@@ -23,8 +23,7 @@ namespace LightsOffCore.Service
         IList<Score> IScoreService.GetTopScores()
         {
             LoadScores();
-            return _scores.OrderByDescending(s => s.Points).Take(3).ToList();
-            //return (from s in _scores orderby s.Points descending select s).Take(3).ToList();
+            return _scores.OrderByDescending(s => s.Points).Take(10).ToList();
         }
 
         void IScoreService.ResetScore()
@@ -49,7 +48,7 @@ namespace LightsOffCore.Service
                 using (var fs = File.OpenRead(FileName))
                 {
                     var bf = new BinaryFormatter();
-                    _scores = (List<Score>)bf.Deserialize(fs);
+                    _scores = (List<Score>) bf.Deserialize(fs);
                 }
             }
         }
