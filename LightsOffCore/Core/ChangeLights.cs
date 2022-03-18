@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace LightsOffCore.Core
 {
     public class ChangeLights
@@ -19,7 +18,7 @@ namespace LightsOffCore.Core
         {
             _field[x, y].Value = !_field[x, y].Value;
 
-            if (x < _field.RowCount)
+            if (x < _field.RowCount - 1)
             {
                 _field[x + 1, y].Value = !_field[x + 1, y].Value;
             }
@@ -27,7 +26,7 @@ namespace LightsOffCore.Core
             {
                 _field[x - 1, y].Value = !_field[x - 1, y].Value;
             }
-            if (y < _field.ColumnCount)
+            if (y < _field.ColumnCount - 1)
             {
                 _field[x, y + 1].Value = !_field[x, y + 1].Value;
             }
@@ -35,7 +34,7 @@ namespace LightsOffCore.Core
             {
                 _field[x, y - 1].Value = !_field[x, y - 1].Value;
             }
-            
+
         }
     }
 }
