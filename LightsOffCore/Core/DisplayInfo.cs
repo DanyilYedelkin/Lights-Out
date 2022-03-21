@@ -9,6 +9,7 @@ namespace LightsOffCore.Core
     public class DisplayInfo
     {
         private Field field;
+        private int x, y;
 
         public void RunMainMenu()
         {
@@ -68,7 +69,7 @@ namespace LightsOffCore.Core
         private void ChoiceColors()
         {
             string prompt = "What color paint would you like to watch dry and backgroud?";
-            string[] options = { "Red & Black", "Green & Black", "White & Black", "Black & White" };
+            string[] options = { "Yellow & Magenta", "Green & Black", "White & Black", "Black & White" };
             Menu colorMenu = new Menu(prompt, options);
             int selectedIndex = colorMenu.Run();
 
@@ -76,8 +77,8 @@ namespace LightsOffCore.Core
             switch (selectedIndex)
             {
                 case 0:
-                    ForegroundColor = ConsoleColor.Red;
-                    BackgroundColor = ConsoleColor.Black;
+                    ForegroundColor = ConsoleColor.Yellow;
+                    BackgroundColor = ConsoleColor.DarkMagenta;
                     break;
                 case 1:
                     ForegroundColor = ConsoleColor.Green;
@@ -105,23 +106,29 @@ namespace LightsOffCore.Core
 
         public void InputSizeMap()
         {
-            int x, y;
             WriteLine("\tTo get started, enter the size of the game map: ");
 
             while (true)
             {
-                Write("X: ");
-                x = int.Parse(ReadLine());
-                Write("Y: ");
-                y = int.Parse(ReadLine());
+                try
+                {
+                    Write("X: ");
+                    x = int.Parse(ReadLine());
+                    Write("Y: ");
+                    y = int.Parse(ReadLine());
 
-                if (x > 0 && y > 0)
-                {
-                    break;
+                    if (x > 0 && y > 0)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        WriteLine("\nPlease, check your map size!\n");
+                    }
                 }
-                else
+                catch (FormatException invalidTypeVariable)
                 {
-                    WriteLine("\nPlease, check your map size!\n");
+                    WriteLine("Please type integers !!!");
                 }
             }
             Clear();
