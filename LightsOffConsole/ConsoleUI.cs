@@ -49,6 +49,7 @@ namespace LightsOff.ConsoleUI
                     WriteLine("Please type integers !!!");
                 }
 
+
                 WriteLine();
             }
 
@@ -139,8 +140,10 @@ namespace LightsOff.ConsoleUI
                 switch (restart)
                 {
                     case "yes":
+                    case "y":
                         return true;
                     case "no":
+                    case "n":
                         WriteLine("\n\tThanks for playing the game. I wish you will have a good day :D\n");
                         displayInfo.ExitGame();
                         return false;
