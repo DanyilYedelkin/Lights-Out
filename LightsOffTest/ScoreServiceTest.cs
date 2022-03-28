@@ -305,4 +305,117 @@ namespace LightsOffTest
         }
 
     }
+
+    [TestClass]
+    public class CommentServiceTest
+    {
+        [TestMethod]
+        public void AddTest1()
+        {
+            var service = CreateService();
+
+            service.AddComment(new Comment { Player = "Jaro", Comments = "1" });
+
+            Assert.AreEqual(1, service.GetComments().Count);
+
+            Assert.AreEqual("Jaro", service.GetComments()[0].Player);
+            Assert.AreEqual("1", service.GetComments()[0].Comments);
+        }
+
+        [TestMethod]
+        public void AddTest3()
+        {
+            var service = CreateService();
+
+            service.AddComment(new Comment { Player = "Jaro", Comments = "1" });
+            service.AddComment(new Comment { Player = "Peter", Comments = "2" });
+            service.AddComment(new Comment { Player = "Jozo", Comments = "3" });
+
+            Assert.AreEqual(3, service.GetComments().Count);
+
+            Assert.AreEqual("Jaro", service.GetComments()[0].Player);
+            Assert.AreEqual("1", service.GetComments()[0].Comments);
+
+            Assert.AreEqual("Peter", service.GetComments()[1].Player);
+            Assert.AreEqual("2", service.GetComments()[1].Comments);
+
+            Assert.AreEqual("Jozo", service.GetComments()[2].Player);
+            Assert.AreEqual("3", service.GetComments()[2].Comments);
+        }
+
+        [TestMethod]
+        public void ResetTest()
+        {
+            var service = CreateService();
+
+            service.AddComment(new Comment { Player = "Jaro", Comments = "Great game!!!"});
+            service.AddComment(new Comment { Player = "Jaro", Comments = "Thank you for the game!"});
+
+            service.ResetComment();
+            Assert.AreEqual(0, service.GetComments().Count);
+        }
+        private ICommentService CreateService()
+        {
+            return new CommentServiceFile();
+        }
+    }
+
+    [TestClass]
+    public class RatingServiceTest
+    {
+        [TestMethod]
+        public void AddTest1()
+        {
+            var service = CreateService();
+
+            service.AddRating(new Rating { Player = "Jaro", Ratings = 4 });
+
+            Assert.AreEqual(1, service.GetRating().Count);
+
+            Assert.AreEqual("Jaro", service.GetRating()[0].Player);
+            Assert.AreEqual(4, service.GetRating()[0].Ratings);
+
+            Assert.AreEqual(4, service.GetGPA());
+        }
+
+        [TestMethod]
+        public void AddTest3()
+        {
+            var service = CreateService();
+
+            service.AddRating(new Rating { Player = "Jaro", Ratings = 3.3 });
+            service.AddRating(new Rating { Player = "Peter", Ratings = 2 });
+            service.AddRating(new Rating { Player = "Jozo", Ratings = 1 });
+
+            Assert.AreEqual(3, service.GetRating().Count);
+
+            Assert.AreEqual("Jaro", service.GetRating()[0].Player);
+            Assert.AreEqual(3.3, service.GetRating()[0].Ratings);
+
+            Assert.AreEqual("Peter", service.GetRating()[1].Player);
+            Assert.AreEqual(2, service.GetRating()[1].Ratings);
+
+            Assert.AreEqual("Jozo", service.GetRating()[2].Player);
+            Assert.AreEqual(1, service.GetRating()[2].Ratings);
+
+            Assert.AreEqual(2.1, service.GetGPA());
+        }
+
+        [TestMethod]
+        public void ResetTest()
+        {
+            var service = CreateService();
+
+            service.AddRating(new Rating { Player = "Jaro", Ratings = 3.2 });
+            service.AddRating(new Rating { Player = "Jaro", Ratings = 4.7 });
+
+            service.ResetRating();
+            Assert.AreEqual(0, service.GetRating().Count);
+            Assert.AreEqual(0, service.GetGPA());
+        }
+        private IRatingService CreateService()
+        {
+            return new RatingServiceFile();
+        }
+    }
 }
