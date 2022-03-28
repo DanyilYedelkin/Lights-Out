@@ -3,8 +3,6 @@ using LightsOffCore.Core;
 using LightsOffCore.Entity;
 using LightsOffCore.Service;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using static System.Console;
 
 
@@ -16,6 +14,8 @@ namespace LightsOff.ConsoleUI
         private DisplayInfo displayInfo;    // all dispay information
         private ChangeLights changeLights;  // changing lights
         private readonly IScoreService _scoreService = new ScoreServiceFile();
+        private readonly ICommentService _commentService = new CommentServiceFile();
+        private readonly IRatingService _ratingService = new RatingServiceFile();
 
         public ConsoleUI(Field field)
         {
@@ -26,7 +26,7 @@ namespace LightsOff.ConsoleUI
 
         public void Play()
         {
-            PrintTopScores();
+            PrintInfoDesk();
 
             while (!_field.IfWin())
             {
@@ -60,7 +60,35 @@ namespace LightsOff.ConsoleUI
             _scoreService.AddScore(
                 new Score { Player = Environment.UserName, Points = _field.GetScore(), PlayedAt = DateTime.Now });
 
-            bool repeat = LastMessage();
+            bool repeat = true;
+            while (repeat)
+            {
+                WriteLine("\n\tDo you want to leave a comment and rating? Input: [yes]/[no]");
+                string restart = ReadLine().ToLower();
+
+                switch (restart)
+                {
+                    case "yes":
+                    case "y":
+                        _commentService.AddComment(
+                            new Comment { Player = Environment.UserName, Comments = _field.GetComment() });
+
+                        _ratingService.AddRating(
+                            new Rating { Player = Environment.UserName, Ratings = _field.GetRating() });
+
+                        repeat = false;
+                        break;
+                    case "no":
+                    case "n":
+                        repeat = false;
+                        break;
+                    default:
+                        WriteLine("\n\tPlease enter the correct command\n");
+                        break;
+                }
+            }
+
+            repeat = LastMessage();
             if (repeat == true) // for repeat a game 
             {
                 _field.Initialize();
@@ -68,7 +96,6 @@ namespace LightsOff.ConsoleUI
                 Play();
             }
         }
-
 
         private void PrintField()
         {
@@ -114,20 +141,46 @@ namespace LightsOff.ConsoleUI
             return Tuple.Create(x, y);
         }
 
-        private void PrintTopScores()
+        private void PrintInfoDesk()
         {
+            // top scores ==============================================================
             int position = 1;
             WriteLine("----------------------------------------------------------------");
             WriteLine("------------------------    TOP SCORES   -----------------------");
-
             foreach (var score in _scoreService.GetTopScores())
             {
                 WriteLine(position + ". {0} {1}", score.Player, score.Points);
                 position++;
             }
+            WriteLine("----------------------------------------------------------------");
 
+
+            // comments ==============================================================
+            position = 1;
+            WriteLine("\n----------------------------------------------------------------");
+            WriteLine("------------------------    COMMENTS   -------------------------");
+            foreach (var comment in _commentService.GetComments())
+            {
+                WriteLine(position + ". {0}: {1}", comment.Player, comment.Comments);
+                position++;
+            }
+            WriteLine("----------------------------------------------------------------");
+
+
+            // rating ==============================================================
+            position = 1;
+            WriteLine("\n----------------------------------------------------------------");
+            WriteLine("------------------------    RATING   -------------------------");
+
+            foreach (var rating in _ratingService.GetRating())
+            {
+                WriteLine(position + ". {0}: {1}", rating.Player, rating.Ratings);
+                position++;
+            }
+            WriteLine("\nGrade Point Average: {0}/5", _ratingService.GetGPA());
             WriteLine("----------------------------------------------------------------");
         }
+
         private bool LastMessage()
         {
             WriteLine("\tCongratulations, you WIN !!!!\n");
