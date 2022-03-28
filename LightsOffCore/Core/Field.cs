@@ -1,7 +1,4 @@
-using LightsOffCore.Core;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LightsOff.Core
 {
@@ -64,5 +61,23 @@ namespace LightsOff.Core
             return RowCount * ColumnCount + 1000 - (DateTime.Now - startTime).Seconds;
         }
 
+        public string GetComment()
+        {
+            Console.WriteLine("\nInput your comment:");
+            return Console.ReadLine();
+        }
+
+        public double GetRating()
+        {
+            Console.WriteLine("\nInput your rating (0-5):");
+            double rate = double.Parse(Console.ReadLine());
+
+            while (rate > 5 || rate < 0)
+            {
+                Console.WriteLine("Incorrect input! Please, input your rating (0-5):");
+                rate = double.Parse(Console.ReadLine());
+            }
+            return rate;
+        }
     }
 }
