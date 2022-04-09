@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightsOffCore", "LightsOffC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightsOffTest", "LightsOffTest\LightsOffTest.csproj", "{77AACA40-18E0-4C30-87C9-45DB7B7B41D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightsOffWeb", "LightsOffWeb\LightsOffWeb.csproj", "{3F85234B-58BC-462B-B6CC-E273066A433B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightsOffWeb", "LightsOffWeb\LightsOffWeb.csproj", "{0F02F782-D91B-41A6-801A-4FDC9E1903C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{77AACA40-18E0-4C30-87C9-45DB7B7B41D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77AACA40-18E0-4C30-87C9-45DB7B7B41D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77AACA40-18E0-4C30-87C9-45DB7B7B41D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F85234B-58BC-462B-B6CC-E273066A433B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F85234B-58BC-462B-B6CC-E273066A433B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F85234B-58BC-462B-B6CC-E273066A433B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F85234B-58BC-462B-B6CC-E273066A433B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F02F782-D91B-41A6-801A-4FDC9E1903C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F02F782-D91B-41A6-801A-4FDC9E1903C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F02F782-D91B-41A6-801A-4FDC9E1903C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F02F782-D91B-41A6-801A-4FDC9E1903C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

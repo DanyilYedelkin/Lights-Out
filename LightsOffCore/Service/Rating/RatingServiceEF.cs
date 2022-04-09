@@ -42,8 +42,8 @@ namespace LightsOffCore.Service
         {
             using (var context = new LightsOffDbContext())
             {
-                return context.Ratings.ToList();
-                //return context.Ratings.OrderByDescending(c => c.PlayedAt).ToList();
+                //return context.Ratings.ToList();
+                return context.Ratings.OrderByDescending(c => c.PlayedAt).ToList();
             }
         }
 

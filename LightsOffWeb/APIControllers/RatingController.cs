@@ -5,7 +5,7 @@ using LightsOffCore.Entity;
 
 namespace LightsOffWeb.APIControllers
 {
-    //https://localhost:44384/api/Rating/
+    //https://localhost:44371/api/Rating/
     [Route("api/[controller]")]
     [ApiController]
     public class RatingController : ControllerBase
@@ -21,7 +21,7 @@ namespace LightsOffWeb.APIControllers
 
         //POST: /api/Rating
         [HttpPost]
-        public void PostComment([FromBody]Rating rating)
+        public void PostComment([FromBody] Rating rating)
         {
             //rating.PlayedAt = DateTime.Now;
             ratingService.AddRating(rating);

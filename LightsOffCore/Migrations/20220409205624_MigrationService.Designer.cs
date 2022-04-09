@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LightsOffCore.Migrations
 {
     [DbContext(typeof(LightsOffDbContext))]
-    [Migration("20220409205100_MigrationService")]
+    [Migration("20220409205624_MigrationService")]
     partial class MigrationService
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace LightsOffCore.Migrations
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PlayedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Player")
                         .HasColumnType("nvarchar(max)");
 
@@ -50,6 +53,9 @@ namespace LightsOffCore.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("PlayedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Player")
                         .HasColumnType("nvarchar(max)");

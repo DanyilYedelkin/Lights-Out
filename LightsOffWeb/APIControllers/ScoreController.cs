@@ -5,7 +5,7 @@ using LightsOffCore.Entity;
 
 namespace LightsOffWeb.APIControllers
 {
-    //https://localhost:44384/api/Score/
+    //https://localhost:44371/api/Score/
     [Route("api/[controller]")]
     [ApiController]
     public class ScoreController : ControllerBase
@@ -21,7 +21,7 @@ namespace LightsOffWeb.APIControllers
 
         //POST: /api/Score
         [HttpPost]
-        public void PostScore([FromBody]Score score)
+        public void PostScore([FromBody] Score score)
         {
             score.PlayedAt = DateTime.Now;
             _scoreService.AddScore(score);

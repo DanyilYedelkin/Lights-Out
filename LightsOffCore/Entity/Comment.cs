@@ -11,6 +11,6 @@ namespace LightsOffCore.Entity
 
         public string Comments { get; set; }
         
-        //public DateTime PlayedAt { get; set; }
+        public DateTime PlayedAt { get; set; }
     }
 }

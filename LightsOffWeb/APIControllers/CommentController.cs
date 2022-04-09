@@ -5,7 +5,7 @@ using LightsOffCore.Entity;
 
 namespace LightsOffWeb.APIControllers
 {
-    //https://localhost:44384/api/Comment/
+    //https://localhost:44371/api/Comment/
     [Route("api/[controller]")]
     [ApiController]
     public class CommentController : ControllerBase
@@ -21,7 +21,7 @@ namespace LightsOffWeb.APIControllers
 
         //POST: /api/Comment
         [HttpPost]
-        public void PostComment([FromBody]Comment comment)
+        public void PostComment([FromBody] Comment comment)
         {
             //comment.PlayedAt = DateTime.Now;
             commentService.AddComment(comment);

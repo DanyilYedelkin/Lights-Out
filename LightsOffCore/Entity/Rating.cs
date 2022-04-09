@@ -13,6 +13,6 @@ namespace LightsOffCore.Entity
 
         public double Ratings { get; set; }
 
-        //public DateTime PlayedAt { get; set; }
+        public DateTime PlayedAt { get; set; }
     }
 }

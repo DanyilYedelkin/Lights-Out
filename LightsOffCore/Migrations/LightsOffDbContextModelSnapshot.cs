@@ -33,6 +33,9 @@ namespace LightsOffCore.Migrations
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PlayedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Player")
                         .HasColumnType("nvarchar(max)");
 
@@ -48,6 +51,9 @@ namespace LightsOffCore.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("PlayedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Player")
                         .HasColumnType("nvarchar(max)");

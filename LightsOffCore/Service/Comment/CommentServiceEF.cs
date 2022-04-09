@@ -21,8 +21,8 @@ namespace LightsOffCore.Service
         {
             using (var context = new LightsOffDbContext())
             {
-                return context.Comments.ToList();
-                //return context.Comments.OrderByDescending(c => c.PlayedAt).ToList();
+                //return context.Comments.ToList();
+                return context.Comments.OrderByDescending(c => c.PlayedAt).ToList();
             }
         }
 
