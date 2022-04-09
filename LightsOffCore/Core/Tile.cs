@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System;
 
 namespace LightsOff.Core
 {
     public class Tile
-    {      
+    {
         public Tile(bool value)
         {
             Value = value;

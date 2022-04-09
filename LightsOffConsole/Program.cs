@@ -1,5 +1,4 @@
-using System;
-using LightsOff.Core;
+﻿using LightsOff.Core;
 using LightsOffCore.Core;
 using static System.Console;
 

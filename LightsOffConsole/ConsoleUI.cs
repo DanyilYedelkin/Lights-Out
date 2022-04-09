@@ -1,4 +1,4 @@
-using LightsOff.Core;
+﻿using LightsOff.Core;
 using LightsOffCore.Core;
 using LightsOffCore.Entity;
 using LightsOffCore.Service;
@@ -13,9 +13,10 @@ namespace LightsOff.ConsoleUI
         private readonly Field _field;      // field (map)
         private DisplayInfo displayInfo;    // all dispay information
         private ChangeLights changeLights;  // changing lights
-        private readonly IScoreService _scoreService = new ScoreServiceFile();
-        private readonly ICommentService _commentService = new CommentServiceFile();
-        private readonly IRatingService _ratingService = new RatingServiceFile();
+        
+        private readonly IScoreService _scoreService = new ScoreServiceEF();
+        private readonly ICommentService _commentService = new CommentServiceEF();
+        private readonly IRatingService _ratingService = new RatingServiceEF();
 
         public ConsoleUI(Field field)
         {
@@ -71,10 +72,10 @@ namespace LightsOff.ConsoleUI
                     case "yes":
                     case "y":
                         _commentService.AddComment(
-                            new Comment { Player = Environment.UserName, Comments = _field.GetComment() });
+                            new Comment { Player = Environment.UserName, Comments = _field.GetComment(), PlayedAt = DateTime.Now });
 
                         _ratingService.AddRating(
-                            new Rating { Player = Environment.UserName, Ratings = _field.GetRating() });
+                            new Rating { Player = Environment.UserName, Ratings = _field.GetRating(), PlayedAt = DateTime.Now });
 
                         repeat = false;
                         break;
@@ -206,6 +207,5 @@ namespace LightsOff.ConsoleUI
                 }
             }
         }
-
     }
 }

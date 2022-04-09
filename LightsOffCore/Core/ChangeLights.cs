@@ -1,7 +1,4 @@
-using LightsOff.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using LightsOff.Core;
 
 namespace LightsOffCore.Core
 {
