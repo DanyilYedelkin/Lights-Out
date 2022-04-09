@@ -14,10 +14,12 @@ namespace LightsOff.ConsoleUI
         private DisplayInfo displayInfo;    // all dispay information
         private ChangeLights changeLights;  // changing lights
         //private readonly IScoreService _scoreService = new ScoreServiceFile();
+        //private readonly ICommentService _commentService = new CommentServiceFile();
+        //private readonly IRatingService _ratingService = new RatingServiceFile();
+        
         private readonly IScoreService _scoreService = new ScoreServiceEF();
-
-        private readonly ICommentService _commentService = new CommentServiceFile();
-        private readonly IRatingService _ratingService = new RatingServiceFile();
+        private readonly ICommentService _commentService = new CommentServiceEF();
+        private readonly IRatingService _ratingService = new RatingServiceEF();
 
         public ConsoleUI(Field field)
         {

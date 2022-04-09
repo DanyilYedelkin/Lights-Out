@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 
 namespace LightsOffCore.Entity
@@ -6,6 +7,7 @@ namespace LightsOffCore.Entity
     [Serializable]
     public class Rating
     {
+        public int Id { get; set; }
         public string Player { get; set; }
 
         public double Ratings { get; set; }

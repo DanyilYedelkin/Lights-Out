@@ -359,7 +359,10 @@ namespace LightsOffTest
         }
         private ICommentService CreateService()
         {
-            return new CommentServiceFile();
+            var service = new CommentServiceEF();
+            service.ResetComment();
+
+            return service;
         }
     }
 
@@ -418,7 +421,10 @@ namespace LightsOffTest
         }
         private IRatingService CreateService()
         {
-            return new RatingServiceFile();
+            var service = new RatingServiceEF();
+            service.ResetRating();
+
+            return service;
         }
     }
 }
