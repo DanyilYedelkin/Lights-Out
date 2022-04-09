@@ -72,10 +72,10 @@ namespace LightsOff.ConsoleUI
                     case "yes":
                     case "y":
                         _commentService.AddComment(
-                            new Comment { Player = Environment.UserName, Comments = _field.GetComment() });
+                            new Comment { Player = Environment.UserName, Comments = _field.GetComment()});
 
                         _ratingService.AddRating(
-                            new Rating { Player = Environment.UserName, Ratings = _field.GetRating() });
+                            new Rating { Player = Environment.UserName, Ratings = _field.GetRating()});
 
                         repeat = false;
                         break;
