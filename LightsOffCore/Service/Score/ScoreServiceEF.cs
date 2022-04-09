@@ -20,7 +20,6 @@ namespace LightsOffCore.Service
         {
             using (var context = new LightsOffDbContext())
             {
-                //return (from s:Score in context.Scores orderby s.Points descending select s).Take(3).ToList();
                 return context.Scores.OrderByDescending(s => s.Points).Take(10).ToList();
             }
         }

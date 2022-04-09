@@ -19,7 +19,6 @@ namespace LightsOffCore.Service
 
         public double GetGPA()
         {
-            //throw new NotImplementedException();
             using (var context = new LightsOffDbContext())
             {
                 int position = 1;
