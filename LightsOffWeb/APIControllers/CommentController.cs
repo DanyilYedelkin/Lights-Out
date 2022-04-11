@@ -23,7 +23,7 @@ namespace LightsOffWeb.APIControllers
         [HttpPost]
         public void PostComment([FromBody] Comment comment)
         {
-            //comment.PlayedAt = DateTime.Now;
+            comment.PlayedAt = DateTime.Now;
             commentService.AddComment(comment);
         }
     }

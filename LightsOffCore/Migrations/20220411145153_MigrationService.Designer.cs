@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LightsOffCore.Migrations
 {
     [DbContext(typeof(LightsOffDbContext))]
-    [Migration("20220409205624_MigrationService")]
+    [Migration("20220411145153_MigrationService")]
     partial class MigrationService
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
