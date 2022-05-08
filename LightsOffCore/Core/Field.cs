@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Linq;
 
 namespace LightsOff.Core
 {
+    [Serializable]
     public class Field
     {
         private readonly Tile[,] _tiles;
         private DateTime startTime;
+        private int typeRegime;
 
         public int RowCount { get; set; }
         public int ColumnCount { get; set; }
@@ -15,6 +18,7 @@ namespace LightsOff.Core
             RowCount = rowCount;
             ColumnCount = columnCount;
             _tiles = new Tile[rowCount, columnCount];
+            typeRegime = 1;
             Initialize();
         }
 
@@ -56,6 +60,22 @@ namespace LightsOff.Core
             return win;
         }
 
+        public void AI()
+        {
+            for (var row = 0; row < RowCount; row++)
+            {
+                for (var column = 0; column < ColumnCount; column++)
+                {
+                    if (_tiles[row, column].Value) _tiles[row, column].Value = false;
+                }
+            }
+        }
+
+        public bool typeOfTile(int row, int column)
+        {
+            return _tiles[row, column].Value;
+        }
+
         public int GetScore()
         {
             return RowCount * ColumnCount + 1000 - (DateTime.Now - startTime).Seconds;
@@ -79,5 +99,69 @@ namespace LightsOff.Core
             }
             return rate;
         }
+
+        public void Toggle(int x, int y)
+        {
+            this[x, y].Value = !this[x, y].Value;
+
+            if (x < this.RowCount - 1)
+            {
+                this[x + 1, y].Value = !this[x + 1, y].Value;
+            }
+            if (x > 0)
+            {
+                this[x - 1, y].Value = !this[x - 1, y].Value;
+            }
+            if (y < this.ColumnCount - 1)
+            {
+                this[x, y + 1].Value = !this[x, y + 1].Value;
+            }
+            if (y > 0)
+            {
+                this[x, y - 1].Value = !this[x, y - 1].Value;
+            }
+        }
+
+        public void ToggleLine(int x, int y)
+        {
+            this[x, y].Value = !this[x, y].Value;
+            int memoryX = x, memoryY = y;
+
+            while (x < this.RowCount - 1)
+            {
+                this[x + 1, y].Value = !this[x + 1, y].Value;
+                x++;
+            }
+            x = memoryX;
+            while (x > 0)
+            {
+                this[x - 1, y].Value = !this[x - 1, y].Value;
+                x--;
+            }
+            x = memoryX;
+            while (y < this.ColumnCount - 1)
+            {
+                this[x, y + 1].Value = !this[x, y + 1].Value;
+                y++;
+            }
+            y = memoryY;
+            while (y > 0)
+            {
+                this[x, y - 1].Value = !this[x, y - 1].Value;
+                y--;
+            }
+            y = memoryY;
+        }
+
+        public int GetTypeRegime()
+        {
+            return typeRegime;
+        }
+
+        public void SetTypeRegime(int newType)
+        {
+            typeRegime = newType;
+        }
+
     }
 }

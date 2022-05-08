@@ -23,7 +23,7 @@ namespace LightsOffCore.Service
             {
                 int position = 1;
                 double sum = 0;
-
+                
                 foreach (var rating in context.Ratings.ToList())
                 {
                     sum += rating.Ratings;

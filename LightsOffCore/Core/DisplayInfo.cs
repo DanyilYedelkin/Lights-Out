@@ -4,6 +4,7 @@ using static System.Console;
 
 namespace LightsOffCore.Core
 {
+    [Serializable]
     public class DisplayInfo
     {
         private Field field;

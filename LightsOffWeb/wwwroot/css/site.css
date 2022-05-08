@@ -14,5 +14,88 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-image: url("images/cats.jpg");
+    background-color: #cccccc;
+    margin-bottom: 60px;
 }
+/* #1a1111 */
+
+img:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 1.2s;
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.button_1651954816176 {
+    display: inline-block !important;
+    text-decoration: none !important;
+    background-color: #6e02ff !important;
+    color: #ffffff !important;
+    border: 3px solid #6f04e0 !important;
+    border-radius: 8px !important;
+    font-size: 32px !important;
+    padding: 7px 36px !important;
+    transition: all 0.6s ease !important;
+}
+
+    .button_1651954816176:hover {
+        text-decoration: none !important;
+        background-color: #c101ff !important;
+        color: #ffffff !important;
+        border-color: #ad00ff !important;
+    }
+
+.button_1651954816177 {
+    display: inline-block !important;
+    text-decoration: none !important;
+    background-color: #4e04ff !important;
+    color: #ffffff !important;
+    border: 3px solid #4e04ff !important;
+    border-radius: 8px !important;
+    font-size: 28px !important;
+    padding: 3px 28px !important;
+    transition: all 0.6s ease !important;
+}
+
+    .button_1651954816177:hover {
+        text-decoration: none !important;
+        background-color: #8701ff !important;
+        color: #ffffff !important;
+        border-color: #8701ff !important;
+    }
+
+
+
+.button_1651954816178 {
+    display: inline-block !important;
+    text-decoration: none !important;
+    background-color: #e300ef !important;
+    color: #ffffff !important;
+    border: 1px solid #d402e3 !important;
+    border-radius: 9px !important;
+    font-size: 28px !important;
+    padding: 2px 19px !important;
+    transition: all 0.6s ease !important;
+}
+
+    .button_1651954816178:hover {
+        text-decoration: none !important;
+        background-color: #ff003a !important;
+        color: #ffffff !important;
+        border-color: #db0033 !important;
+    }
