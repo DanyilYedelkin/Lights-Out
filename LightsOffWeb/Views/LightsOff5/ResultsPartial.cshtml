@@ -19,7 +19,21 @@
 	
 
 
-	<h2>Ratings</h2>
+	<h2>Comments</h2>
+    <ol>
+        @foreach (var comment in Model.Comments)
+        {
+            <li>@comment.Player: @comment.Comments</li>
+        }
+    </ol>
+
+    <form action="/LightsOff5/SaveComment" method="post">
+        Name: <input type="text" name="Player"/><br/>
+        Comment: <input type="text" name="Comments"/><br/>
+        <input type="submit"/><br />
+    </form>
+
+    <h2>Ratings</h2>
     <ol>
         @foreach (var rating in Model.Ratings)
         {
@@ -53,22 +67,6 @@
 
     <form action="/LightsOff5/SaveRating" method="post">
         Name: <input type="text" name="Player"/><br/>
-        Rating: <input type="number" name="Raitings"/><br/>
-        <input type="submit"/><br />
-    </form>
-
-
-
-	<h2>Comments</h2>
-    <ol>
-        @foreach (var comment in Model.Comments)
-        {
-            <li>@comment.Player: @comment.Comments</li>
-        }
-    </ol>
-
-    <form action="/LightsOff5/SaveComment" method="post">
-        Name: <input type="text" name="Player"/><br/>
-        Comment: <input type="text" name="Comments"/><br/>
+        Rating: <input style = "color: black" type="number" step="0.1" name="Raitings"/><br/>
         <input type="submit"/><br />
     </form>
