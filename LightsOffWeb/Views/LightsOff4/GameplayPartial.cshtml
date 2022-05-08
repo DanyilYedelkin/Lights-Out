@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+@using LightsOffWeb.Models
+@model LightsOffModel;
+
+@{
+	ViewData["Title"] = "Lights Off";
+}
+
+<html>
+	
+<head>
+	<title>LightsOut Game with AI</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/site.css" />
+
+
+	<style>   
+            body {
+                background-color: #212529;
+                margin:0;
+                padding: 15px;
+                color:white;
+                font-family:'Poiret One';
+            }
+
+            h1 {
+                float:left;
+                transform:rotate(90deg);
+                font-size:60px;
+                margin-left:-90px;
+                margin-top:100px;
+                font-weight:normal;
+            }
+
+            @@media (max-width: 410px) {
+                h1 {
+                    clear:left;
+                    transform:rotate(0deg);
+                    font-size:30px;
+                    margin-left:0px;
+                    margin-top:0px;
+                }
+            }
+        </style>
+		
+</head>
+<body>
+	
+	<div style="float:left;position: relative;border: 1px solid white; padding:20px;">
+        <canvas id="canvas" width="290" height="290"></canvas>
+    </div>
+    <h1 id="header">LightsOut</h1>
+
+    <div style="float:left;position: absolute;border: 0px; padding:20px;">
+    <table>
+	@for (var row = 0; row < Model.Field.RowCount; row++)
+	{
+		<tr>
+			@for (var column = 0; column < Model.Field.ColumnCount; column++)
+			{
+				var tile = Model.Field[row, column];
+				if (tile == null)
+                {
+                    <td />
+                }
+
+				var typeRegime = Model.Field.GetTypeRegime();
+
+                string r = (row + 1).ToString(), c = (column + 1).ToString();
+                string coordinate = r + c + typeRegime;
+				
+				<td>
+					<a href = "/LightsOff4/Coordinate?tile=@(int.Parse(coordinate))#work">
+						<img src="/images/light@(tile.Value).png" width="60" height="60" style="margin-left: -9px; margin-top: -13px;"/>
+					</a>
+				</td>
+			}
+		</tr>
+	}
+	</table>
+	</div>
+	<div style="float:left;position: absolute;border: 0px; padding:20px; margin-left: 380px; margin-top: 0px;">
+		<a href="/LightsOff4#work" class="button_1651954816176" target="">
+            Restart
+        </a>
+    </div>
+	<div style="float:left;position: absolute;border: 0px; padding:20px; margin-left: 410px; margin-top: 73px;">
+        <a href="/LightsOff3" class="button_1651954816177" target="">
+            3x3
+        </a>	
+	</div>
+    <div style="float:left;position: absolute;border: 0px; padding:20px; margin-left: 407px; margin-top: 133px;">
+        <a href="/LightsOff5" class="button_1651954816177" target="">
+            5x5
+        </a>	
+	</div>
+    <div style="float:left;position: absolute;border: 0px; padding:20px; margin-left: 410px; margin-top: 250px;">
+        <a href="/LightsOff4#intro" class="button_1651954816178" target="">
+            Solver
+        </a>	
+	</div>
+
+
+	
+
+     <div style="clear:left;margin-bottom: 30px;width: 80%">
+         <p><strong>Solved: </strong> @Model.Field.IfWin()</p>
+         <p><strong>Rules: </strong> LightsOut is a small game with the aim to clear the board by clicking on the grid. When clicked on a grid-cell, the  cell is turned on if it was off and off if it was on. The same happens to all neighbor cells of the clicked cell. </p>
+         <p>If you have no clue, you can use the AI to solve it. Just press the space bar (or double tap on mobile devices) and click all marked cells. <a href="/" style="color:white;font-weight:bold">Here</a> is how it works</p>
+         <p>© <a href="/" style="color:white;font-weight:bold">Danyil Yedelkin</a> All rights reserved.</p>
+    </div>
+
+    <div style="float:left;position: relative;border: 0px; padding:20px; margin-left: 0px; margin-top: 200px;">
+		  <a href = "/LightsOff4/Coordinate?tile=@(111)#work" class="button_1651954816176">Standart</a>
+     </div>
+     <div style="float:left;position: relative;border: 0px; padding:20px; margin-left: 100px; margin-top: 200px;">
+		  <a href = "/LightsOff4/Coordinate?tile=@(112)#work" class="button_1651954816176">Lines</a>
+     </div>
+	@if (@Model.Field.IfWin())
+	{
+		<script>
+			alert("Congratulations!!! You win!!!");
+		</script>
+		 <meta http-equiv="refresh" content="0; url=https://localhost:44371/LightsOff4#intro">
+    }
+
+   
+	
+</body>
+	
+</html>

@@ -1,7 +1,9 @@
 ﻿using LightsOff.Core;
+using System;
 
 namespace LightsOffCore.Core
 {
+    [Serializable]
     public class ChangeLights
     {
         private Field _field;

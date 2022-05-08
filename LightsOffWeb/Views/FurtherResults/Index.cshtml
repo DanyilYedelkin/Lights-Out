@@ -1,0 +1,137 @@
+﻿
+@{
+	ViewData["Title"] = "FurtherResults";
+}
+
+<h1>Further results</h1>
+<a href="#intro">Gameplay</a>
+
+<p>If a light is on, it must be toggled an odd number of times to be turned off. 
+	If a light is off, it must be toggled an even number of times (including none at all) for it to remain off. 
+	Several conclusions are used for the game's strategy. 
+	Firstly, the order in which the lights are pressed does not matter, as the result will be the same.
+	Secondly, in a minimal solution, each light needs to be pressed no more than once, because pressing a 
+	light twice is equivalent to not pressing it at all.</p>
+
+
+	<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<h1>Mathematics</h1>
+		<link rel="stylesheet" href="~/css/main.css" />
+		<noscript><link rel="stylesheet" href="~/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Gameplay</h1>
+								<p>The game consists of a 5 by 5 grid of lights. When the game starts, a random number or a 
+									stored pattern of these lights is switched on. Pressing any of the lights will toggle it and
+									the four adjacent lights. 
+									The goal of the puzzle is to switch all the lights off, preferably in as few button presses as possible.</p>
+									<p>Game solving methods:</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">Mathematics</a></li>
+								<li><a href="#work">Light chasing</a></li>
+								<li><a href="#about">Further results</a></li>
+								<li><a href="/Home">Home</a></li>
+								<!--<li><a href="#elements">Elements</a></li>-->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Gameplay (intro) -->
+							<article id="intro">
+								<h2 class="major">Mathematics</h2>
+								<span class="image main"><img src="images/mathematics.png" alt="" /></span>
+								<p>If a light is on, it must be toggled an odd number of times to be turned off. If a light is off, 
+									it must be toggled an even number of times (including none at all) for it to remain off. 
+									Several conclusions are used for the game's strategy. Firstly, the order in which the lights 
+									are pressed does not matter, as the result will be the same. Secondly, 
+									in a minimal solution, each light needs to be pressed no more than once, because pressing a 
+									light twice is equivalent to not pressing it at all.</p>
+									
+								<p>In 1998, Marlow Anderson and Todd Feil used linear algebra to prove that not all configurations are 
+									solvable and also to prove that there are exactly four winning scenarios, not including redundant 
+									moves, for any solvable 5×5 problem.[6] The 5×5 grid of Lights Out can be represented as a 25x1 
+									column vector with a 1 and 0 signifying a light in its on and off state respectively. Each entry
+									is an element of Z2, the field of integers modulo 2. Anderson and Feil found that in order for 
+									a configuration to be solvable (deriving the null vector from the original configuration) it must
+									be orthogonal to the two vectors N1 and N2 below (pictured as a 5×5 array but not to be confused 
+									with matrices).</p>
+								<p>In addition, they found that N1 and N2 can be used to find three additional solutions from a 
+									solution, and that these four solutions are the only four solutions (excluding redundant moves)
+									to the starting given configuration. These four solutions are X, X + N1, X + N2, and X + N1 + N2
+									where X is a solution to the starting given configuration.[6] An introduction into this method 
+									was published by Robert Eisele.</p>
+									<p><a href="https://en.wikipedia.org/wiki/Lights_Out_(game)">Wikipedia</a></p>
+
+							</article>
+
+						<!-- Work -->
+							<article id="work">
+								<h2 class="major">Light chasing</h2>
+								<span class="image main"><img src="images/lightChasing.png" alt="" /></span>
+								<p>"Light chasing" is a method similar to Gaussian elimination which always solves the puzzle 
+									(if a solution exists), although with the possibility of many redundant steps. 
+									In this approach, rows are manipulated one at a time starting with the top row. All the 
+									lights are disabled in the row by toggling the adjacent lights in the row directly below. 
+									The same method is then used on the consecutive rows up to the last one. The last row is 
+									solved separately, depending on its active lights. Corresponding lights (see table below) 
+									in the top row are toggled and the initial algorithm is run again, resulting in a solution.</p>
+								<p>Tables and strategies for other board sizes are generated by playing Lights Out with a
+									blank board and observing the result of bringing a particular light from the top row down to the bottom row.</p>
+								<p><a href="https://en.wikipedia.org/wiki/Lights_Out_(game)">Wikipedia</a></p>
+							</article>
+
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">Further results</h2>
+								<p>Once a single solution is found, a solution with the minimum number of moves can be determined 
+									through elimination of redundant sets of button presses that have no cumulative effect.
+									If the 5×5 puzzle is unsolvable under legal game creation, two leftmost lights on the bottom 
+									row will remain on when all other lights have been turned off.</p>
+								<p>Existence of solutions has been proved for a wide variety of board configurations, such as hexagonal,
+									while solutions to n-by-n boards for n≤200 have been explicitly constructed.</p>
+								<p>There exists a solution for every N×N case. It is solvable on any undirected graph, where clicking on 
+									one vertex flips its value and its neighbours. More generally if the action matrix is symmetric 
+									then its diagonal is always solvable.</p>
+								<p><a href="https://en.wikipedia.org/wiki/Lights_Out_(game)">Wikipedia</a></p>
+							</article>					
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Danyil Yedelkin.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="~/js/jquery.min.js"></script>
+			<script src="~/js/browser.min.js"></script>
+			<script src="~/js/breakpoints.min.js"></script>
+			<script src="~/js/util.js"></script>
+			<script src="~/js/main.js"></script>
+
+	</body>
+</html>

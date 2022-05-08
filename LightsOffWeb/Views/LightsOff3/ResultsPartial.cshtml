@@ -1,0 +1,74 @@
+﻿@using LightsOffWeb.Models
+@model LightsOffModel;
+
+
+
+	<h2>Scores</h2>
+    <ol>
+        @foreach (var score in Model.Scores)
+        {
+            <li>@score.Player: @score.Points</li>
+        }
+    </ol>
+
+    <form action="/LightsOff3/SaveScore" method="post">
+        Name: <input type="text" name="Player"/><br/>
+        
+        <input type="submit"/><br />
+    </form>
+	
+
+
+	<h2>Ratings</h2>
+    <ol>
+        @foreach (var rating in Model.Ratings)
+        {
+            <li>@rating.Player: @rating.Ratings</li>
+        }
+    </ol>
+	
+@while (true)
+{
+    double sum = 0;
+	int count = 1;
+	@foreach (var rating in Model.Ratings)
+    {
+        sum += rating.Ratings;
+	    count++;
+    }
+		
+    @if (sum == 0)
+    {
+        <p>GPA = 0</p>
+        break;
+    } 
+    else
+    {
+        double result = Math.Round((sum / (count - 1)), 2);
+        <p>GPA = @result</p>
+        break;
+    }
+}
+
+
+    <form action="/LightsOff3/SaveRating" method="post">
+        Name: <input type="text" name="Player"/><br/>
+        Rating: <input type="number" step="0.1" name="Raitings"/><br/>
+        <input type="submit"/><br />
+    </form>
+
+
+
+	<h2>Comments</h2>
+    <ol>
+        @foreach (var comment in Model.Comments)
+        {
+            <li>@comment.Player: @comment.Comments</li>
+        }
+    </ol>
+
+    <form action="/LightsOff3/SaveComment" method="post">
+        Name: <input type="text" name="Player"/><br/>
+        Comment: <input type="text" name="Comments"/><br/>
+        <input type="submit"/><br />
+    </form>

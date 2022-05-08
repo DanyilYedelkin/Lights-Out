@@ -3,6 +3,7 @@ using static System.Console;
 
 namespace LightsOffCore.Core
 {
+    [Serializable]
     public class Menu
     {
         private int SelectedIndex;  // for current cursor position 
